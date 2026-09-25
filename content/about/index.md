@@ -6,21 +6,18 @@ aliases:
 author: "Darwin Delgado"
 ---
 
-Infrastructure Engineer especializado en Linux e infraestructura híbrida. Monto, automatizo y documento lo que construyo — sin relleno.
+Pensamiento crítico, toma de decisiones y resolución de problemas. Experiencia especial en infraestructura crítica bancaria: nube híbrida (AWS, Azure) y on-premise.
 
-Aquí publico guías técnicas y artículos prácticos basados en mi experiencia real.
+**email:** dsdelgadomo[at]gmail[dot]com<br>
+**cv:** <a href="/darwin-delgado-resumen.pdf" target="_blank" rel="noopener">darwin-delgado-resumen.pdf</a>
 
-<!--
-#### Certificaciones
-
-- AWS Certified Solutions Architect
-- AWS Certified Cloud Practitioner
-- Red Hat Certified System Administrator (RHCSA)
--->
-
-#### Stack Tecnológico
-
-AWS • Azure • Docker • k8s • Ansible • Bash • Prometheus • Grafana • Zabbix • Git • GitHub • Linux
+- **Linux:** especialista en RHEL.
+- **Cloud AWS:** EC2 · VPC · IAM · IAM Identity Center · S3 · ALB · Auto Scaling · RDS · SSM (Patch Manager).
+- **Cloud Azure:** VMs · VNet · NSG · Firewall · VPN (Local Network Gateway).
+- **Contenedores:** Docker · Kubernetes · ECS · ECR.
+- **Automatización:** Ansible · Bash · Terraform.
+- **CI/CD:** GitHub Actions · Azure DevOps.
+- **Monitoreo:** Zabbix · Prometheus · Grafana · CloudWatch.
 
 -----
 
