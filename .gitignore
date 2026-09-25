@@ -1,5 +1,10 @@
 public/
 .hugo_build.lock
-drupal-export/blog_export*
-drupal-export/exported-comments.xml
 DEPLOY.md
+
+# Notas personales (no públicas)
+ESTRATEGIA-*.md
+
+# Obsidian y caché de Hugo
+.obsidian/
+resources/_gen/
