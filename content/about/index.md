@@ -9,7 +9,7 @@ author: "Darwin Delgado"
 Pensamiento crítico, toma de decisiones y resolución de problemas. Experiencia especial en infraestructura crítica bancaria: nube híbrida (AWS, Azure) y on-premise.
 
 **email:** dsdelgadomo[at]gmail[dot]com<br>
-**cv:** <a href="/darwin-delgado-resumen.pdf" target="_blank" rel="noopener">darwin-delgado-resumen.pdf</a>
+**cv:** <a href="/darwin_delgado_resumen_es.pdf" target="_blank" rel="noopener">darwin_delgado_resumen_es.pdf</a>
 
 - **Linux:** especialista en RHEL.
 - **Cloud AWS:** EC2 · VPC · IAM · IAM Identity Center · S3 · ALB · Auto Scaling · RDS · SSM (Patch Manager).
