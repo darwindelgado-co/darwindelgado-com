@@ -11,7 +11,7 @@ Hay algo que casi nunca vas a encontrar en un tutorial o en una certificación, 
 
 <!--more-->
 
-Casi todos pasamos por lo mismo. Empiezas con energía, todo es nuevo y te emociona. Pero a las pocas semanas aparece el valle de la desilusión: ya no es novedad, no avanzas tan rápido y nada se ve tan brillante como al principio. Ahí es donde casi todos lo dejan. Quien sigue pasa el valle y llega al crecimiento.
+Casi todos pasamos por lo mismo. Empiezas con energía, todo es nuevo y te emociona. Pero a las pocas semanas aparece el valle de la desilusión: ya no es novedad, no avanzas tan rápido y nada se ve tan brillante como al principio. Ahí es donde casi todos lo dejan. Quien sigue cruza el valle y llega al crecimiento.
 
 Constancia es seguir aunque no tengas ganas, aunque no veas resultados y aunque no estés seguro de si lo haces bien.
 
