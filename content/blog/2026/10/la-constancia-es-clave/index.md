@@ -15,7 +15,7 @@ Casi todos pasamos por lo mismo. Empiezas con energía, todo es nuevo y te emoci
 
 Constancia es seguir aunque no tengas ganas, aunque no veas resultados y aunque no estés seguro de si lo haces bien.
 
-A mí me funciona leer. No es lo más rápido, pero me obliga a entender el por qué de las cosas, no solo el cómo, y eso lo hace durar. Cada quien encuentra su forma. Lo importante es encontrarla y no soltarla.
+A mí me funciona leer. No es lo más rápido, pero me obliga a entender el porqué de las cosas, no solo el cómo, y eso lo hace durar. Cada quien encuentra su forma. Lo importante es encontrarla y no soltarla.
 
 Y no hacen falta horas infinitas. Con 20, 30 o 40 minutos al día, con el tiempo, se nota. Más vale un poquito todos los días que un día heroico y luego nada.
 
