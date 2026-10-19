@@ -8,3 +8,6 @@ ESTRATEGIA-*.md
 # Obsidian y caché de Hugo
 .obsidian/
 resources/_gen/
+
+# Posts que quedan solo en local
+content/blog/2026/06/aws-efs-traning/
