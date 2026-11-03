@@ -93,7 +93,5 @@ Para que el sistema de archivos se monte automáticamente cuando la instancia se
 echo "fs-XXXXXXXX:/ /mnt/efs efs defaults,_netdev 0 0" | sudo tee -a /etc/fstab
 ```
 El parámetro _netdev asegura que el sistema espere a tener red antes de intentar montar EFS, evitando errores en el arranque.
------
 
-Eso es todo. Nada de replicación manual, nada de sincronizar carpetas — el mount target se encarga.
 -----
