@@ -5,29 +5,6 @@ title: 'Arquitectura EFS Multi-AZ: Almacenamiento compartido de alta disponibili
 slug: 'Elastic-File-System'
 ---
 
-Si tienes dos instancias EC2 en distintas Availability Zones y necesitas que ambas lean y escriban los mismos archivos en tiempo real (sin usar Rsync ni copiar carpetas a mano), la respuesta es Amazon EFS. En esta guía **desplegaré** un sistema de archivos NFS administrado por AWS y te **mostraré** paso a paso cómo montarlo en ambas instancias para lograr una arquitectura Multi-AZ altamente disponible.
-
-<!--more-->
-
-<!-- DIAGRAMA PRINCIPAL: Ocupa el 100% del ancho, con bordes redondeados y sombra -->
-<img src="./efs-storage.png" alt="Diagrama de arquitectura EFS Multi-AZ conectando dos EC2 a través de Mount Targets" style="width: 100%; max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin-top: 1rem; margin-bottom: 2rem;">
-
------
-
-## 1. Creo el filesystem
-
-Primero voy a la consola de EFS → Create file system → Name: `training-efs`, VPC: `training-vpc`.
----
-date: '2026-06-12T09:00:00-05:00'
-tags: ['aws', 'cloud', 'efs', 'multi-az', 'arquitectura', 'nfs']
-title: 'Arquitectura EFS Multi-AZ: Almacenamiento compartido de alta disponibilidad en AWS'
-slug: 'Elastic-File-System'
----
-
-Si tienes dos instancias EC2 en distintas Availability Zones y necesitas que ambas lean y escriban los mismos archivos en tiempo real (sin usar Rsync ni copiar carpetas a mano), la respuesta es Amazon EFS. En esta guía **desplegaré** un sistema de archivos NFS administrado por AWS y te **mostraré** paso a paso cómo montarlo en ambas instancias para lograr una arquitectura Multi-AZ altamente disponible.
-
-<!--more-->
-
 {{< figure
   src="./efs-storage.png"
   alt="Diagrama de arquitectura EFS Multi-AZ conectando dos EC2 a través de Mount Targets"
@@ -35,6 +12,8 @@ Si tienes dos instancias EC2 en distintas Availability Zones y necesitas que amb
   height="auto"
   class="insert-image"
 >}}
+
+Si tienes dos instancias EC2 en distintas Availability Zones y necesitas que ambas lean y escriban los mismos archivos en tiempo real (sin usar Rsync ni copiar carpetas a mano), la respuesta es Amazon EFS. En esta guía **desplegaré** un sistema de archivos NFS administrado por AWS y te **mostraré** paso a paso cómo montarlo en ambas instancias para lograr una arquitectura Multi-AZ altamente disponible.
 
 -----
 
@@ -88,6 +67,7 @@ sudo dnf install -y amazon-efs-utils
 sudo mkdir -p /mnt/efs
 sudo mount -t efs fs-XXXXXXXX:/ /mnt/efs
 ```
+
 El paquete amazon-efs-utils maneja el cifrado TLS automáticamente ("Enforce in-transit encryption" activado en el paso 1).
 
 ## 5. Verifica que funciona
