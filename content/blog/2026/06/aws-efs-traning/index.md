@@ -17,6 +17,30 @@ Si tienes dos instancias EC2 en distintas Availability Zones y necesitas que amb
 ## 1. Creo el filesystem
 
 Primero voy a la consola de EFS → Create file system → Name: `training-efs`, VPC: `training-vpc`.
+---
+date: '2026-06-12T09:00:00-05:00'
+tags: ['aws', 'cloud', 'efs', 'multi-az', 'arquitectura', 'nfs']
+title: 'Arquitectura EFS Multi-AZ: Almacenamiento compartido de alta disponibilidad en AWS'
+slug: 'Elastic-File-System'
+---
+
+Si tienes dos instancias EC2 en distintas Availability Zones y necesitas que ambas lean y escriban los mismos archivos en tiempo real (sin usar Rsync ni copiar carpetas a mano), la respuesta es Amazon EFS. En esta guía **desplegaré** un sistema de archivos NFS administrado por AWS y te **mostraré** paso a paso cómo montarlo en ambas instancias para lograr una arquitectura Multi-AZ altamente disponible.
+
+<!--more-->
+
+{{< figure
+  src="./efs-storage.png"
+  alt="Diagrama de arquitectura EFS Multi-AZ conectando dos EC2 a través de Mount Targets"
+  width="900"
+  height="auto"
+  class="insert-image"
+>}}
+
+-----
+
+## 1. Creo el filesystem
+
+Primero voy a la consola de EFS → Create file system → Name: `training-efs`, VPC: `training-vpc`.
 
 En las opciones de personalización elijo: **Storage class** Standard, **Throughput** Elastic (así pago por lo que uso, ideal para cargas de trabajo variables) y activo la **encriptación at-rest**.
 
@@ -27,8 +51,9 @@ Así queda el filesystem una vez creado:
 {{< figure
   src="./aws-efs.png"
   alt="Pantalla de detalle del filesystem training-efs"
-  caption="Detalle del filesystem training-efs en la consola de AWS"
-  class="screenshot-img"
+  width="900"
+  height="auto"
+  class="insert-image"
 >}}
 
 ## 2. Security Group y Arquitectura de Red (Multi-AZ)
@@ -45,8 +70,9 @@ Vuelvo a EFS → mi filesystem → Network → edito los mount targets → asign
 {{< figure
   src="./sg-int.png"
   alt="Reglas inbound del security group training-sg-efs permitiendo NFS puerto 2049"
-  caption="Reglas inbound del security group permitiendo el puerto NFS (2049)"
-  class="screenshot-img"
+  width="900"
+  height="auto"
+  class="insert-image"
 >}}
 
 ## 3. Lanzo dos EC2 en AZ diferentes
@@ -62,7 +88,6 @@ sudo dnf install -y amazon-efs-utils
 sudo mkdir -p /mnt/efs
 sudo mount -t efs fs-XXXXXXXX:/ /mnt/efs
 ```
-
 El paquete amazon-efs-utils maneja el cifrado TLS automáticamente ("Enforce in-transit encryption" activado en el paso 1).
 
 ## 5. Verifica que funciona
