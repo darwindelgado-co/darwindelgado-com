@@ -69,48 +69,36 @@ sudo mkdir -p /mnt/efs
 sudo mount -t efs fs-XXXXXXXX:/ /mnt/efs
 ```
 
-El mount helper maneja TLS automáticamente (porque activamos "Enforce in-transit encryption").
+El paquete amazon-efs-utils maneja el cifrado TLS automáticamente ("Enforce in-transit encryption" activado en el paso 1).
 
 ## 5. Verifica que funciona
 
-**En EC2-1**, escribe:
+**En EC2-1**, escribo un archivo de prueba::
 ```bash
 echo "escrito desde EC2-1" | sudo tee /mnt/efs/prueba.txt
 ```
 
-{{< figure
-  src="./ec2-1-efs-prueba.png"
-  alt="Terminal de EC2-1 montando EFS y escribiendo el archivo de prueba"
-  width="900"
-  height="auto"
-  class="insert-image"
->}}
+<figure style="margin: 2rem 0;"> <img src="./ec2-1-efs-prueba.png" alt="Terminal de EC2-1 montando EFS" style="width: 100%; border: 1px solid #e1e4e8; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.08);"> <figcaption style="font-size: 0.85rem; color: #666; text-align: center; margin-top: 10px; font-style: italic;">EC2-1 montando el sistema de archivos y escribiendo el archivo de prueba</figcaption> </figure>
 
-Nota el `df -h`: EFS aparece con `8.0E` de capacidad — es "elástico", crece con lo que uses. Pagas por GB/mes, no por capacidad reservada.
+Si ejecutas df -h, notarás que EFS reporta una capacidad de 8.0E. Esto se debe a que es un sistema de archivos elástico; crece automáticamente y pagas solo por el GB/mes que realmente ocupas.
 
-**En EC2-2** (otra AZ), lee:
+**En EC2-2** (situada en otra Availability Zone), leo el archivo:
 ```bash
 cat /mnt/efs/prueba.txt
 # Resultado: escrito desde EC2-1
 ```
 
-{{< figure
-  src="./ec2-2-efs-prueba.png"
-  alt="Terminal de EC2-2 leyendo el archivo escrito desde EC2-1, confirmando el filesystem compartido"
-  width="900"
-  height="auto"
-  class="insert-image"
->}}
+<figure style="margin: 2rem 0;"> <img src="./ec2-2-efs-prueba.png" alt="Terminal de EC2-2 leyendo el archivo" style="width: 100%; border: 1px solid #e1e4e8; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.08);"> <figcaption style="font-size: 0.85rem; color: #666; text-align: center; margin-top: 10px; font-style: italic;">EC2-2 leyendo en tiempo real el archivo creado desde otra Availability Zone</figcaption> </figure>
 
-Mismo archivo, desde diferentes AZ, en tiempo real.
+¡Listo! El mismo archivo está disponible desde diferentes AZ, en tiempo real.
 
 ## 6. Monta persistente (opcional)
 
-Para que monte al reiniciar:
+Para que el sistema de archivos se monte automáticamente cuando la instancia se reinicie, edito el /etc/fstab:
 ```bash
 echo "fs-XXXXXXXX:/ /mnt/efs efs defaults,_netdev 0 0" | sudo tee -a /etc/fstab
 ```
-
+El parámetro _netdev asegura que el sistema espere a tener red antes de intentar montar EFS, evitando errores en el arranque.
 -----
 
 Eso es todo. Nada de replicación manual, nada de sincronizar carpetas — el mount target se encarga.
