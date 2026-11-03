@@ -74,7 +74,7 @@ echo "escrito desde EC2-1" | sudo tee /mnt/efs/prueba.txt
 
 <figure style="margin: 2rem 0;"> <img src="./ec2-1-efs-prueba.png" alt="Terminal de EC2-1 montando EFS" style="width: 100%; border: 1px solid #e1e4e8; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.08);"> <figcaption style="font-size: 0.85rem; color: #666; text-align: center; margin-top: 10px; font-style: italic;">EC2-1 montando el sistema de archivos y escribiendo el archivo de prueba</figcaption> </figure>
 
-Si ejecutas 'df -h', notarás que EFS reporta una capacidad de 8.0E. Esto se debe a que es un sistema de archivos elástico; crece automáticamente y pagas solo por el GB/mes que realmente ocupas.
+> Si ejecutas **df -h**, notarás que EFS reporta una capacidad de 8.0E. Esto se debe a que es un sistema de archivos elástico; crece automáticamente y pagas solo por el GB/mes que realmente ocupas.
 
 **En EC2-2** (situada en otra Availability Zone), leo el archivo:
 ```bash
