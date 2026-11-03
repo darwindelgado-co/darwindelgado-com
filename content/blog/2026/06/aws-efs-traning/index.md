@@ -4,13 +4,15 @@ tags: ['aws', 'cloud', 'efs', 'multi-az', 'arquitectura', 'nfs']
 title: 'Arquitectura EFS Multi-AZ: Almacenamiento compartido de alta disponibilidad en AWS'
 slug: 'Elastic-File-System'
 ---
+{{< figure
+  src="./efs-storage.png"
+  alt="Diagrama de arquitectura EFS Multi-AZ"
+  width="700"
+  height="auto"
+  class="insert-image"
+>}}
 
-<!-- Imagen principal: Centrada, con ancho máximo y SIN deformarse -->
-<img src="./efs-storage.png" alt="Diagrama de arquitectura EFS Multi-AZ" style="display: block; margin: 2rem auto; max-width: 900px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-
-Si tienes dos instancias EC2 en distintas Availability Zones y necesitas que ambas lean y escriban los mismos archivos en tiempo real (sin usar Rsync ni copiar carpetas a mano), la respuesta es Amazon EFS. En esta guía **desplegaré** un sistema de archivos NFS administrado por AWS y te **mostraré** paso a paso cómo montarlo en ambas instancias para lograr una arquitectura Multi-AZ altamente disponible.
-
------
+Si tienes dos instancias EC2 en distintas Availability Zones y necesitas que ambas lean y escriban los mismos archivos en tiempo real (sin usar Rsync ni copiar carpetas a mano), la respuesta es Amazon EFS. En esta guía desplegaré un sistema de archivos NFS administrado por AWS y te mostraré paso a paso cómo montarlo en ambas instancias para lograr una arquitectura Multi-AZ altamente disponible.
 
 ## 1. Creo el filesystem
 
@@ -22,10 +24,13 @@ En **File system policy**, marco la opción **"Enforce in-transit encryption for
 
 Así queda el filesystem una vez creado:
 
-<figure style="margin: 2rem auto; max-width: 900px;">
-  <img src="./aws-efs.png" alt="Pantalla de detalle del filesystem training-efs" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #e1e4e8; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
-  <figcaption style="font-size: 0.85rem; color: #666; text-align: center; margin-top: 10px; font-style: italic;">Detalle del filesystem training-efs en la consola de AWS</figcaption>
-</figure>
+{{< figure
+  src="./aws-efs.png"
+  alt="Pantalla de detalle del filesystem training-efs"
+  width="700"
+  height="auto"
+  class="insert-image"
+>}}
 
 ## 2. Security Group y Arquitectura de Red (Multi-AZ)
 
@@ -38,10 +43,13 @@ Vuelvo a EFS → mi filesystem → Network → edito los mount targets → asign
 
 > **Nota de Arquitectura:** Como tengo instancias en dos AZs distintas, AWS crea automáticamente un **Mount Target en cada AZ**. Esto es vital por dos razones: **Alta Disponibilidad** (si una AZ falla, la otra sigue accediendo) y **Bajo Latencia** (el tráfico no cruza entre zonas, evitando costos de transferencia y latencia).
 
-<figure style="margin: 2rem auto; max-width: 900px;">
-  <img src="./sg-int.png" alt="Reglas inbound del security group training-sg-efs" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid #e1e4e8; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
-  <figcaption style="font-size: 0.85rem; color: #666; text-align: center; margin-top: 10px; font-style: italic;">Reglas inbound del security group permitiendo el puerto NFS (2049)</figcaption>
-</figure>
+{{< figure
+  src="./sg-int.png"
+  alt="Reglas inbound del security group"
+  width="700"
+  height="auto"
+  class="insert-image"
+>}}
 
 ## 3. Lanzo dos EC2 en AZ diferentes
 
