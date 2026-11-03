@@ -14,6 +14,8 @@ slug: 'Elastic-File-System'
 
 Si tienes dos instancias EC2 en distintas Availability Zones y necesitas que ambas lean y escriban los mismos archivos en tiempo real (sin usar Rsync ni copiar carpetas a mano), la respuesta es Amazon EFS. En esta guía desplegaré un sistema de archivos NFS administrado por AWS y te mostraré paso a paso cómo montarlo en ambas instancias para lograr una arquitectura Multi-AZ altamente disponible.
 
+<!--more-->
+
 ## 1. Creo el filesystem
 
 Primero voy a la consola de EFS → Create file system → Name: `training-efs`, VPC: `training-vpc`.
